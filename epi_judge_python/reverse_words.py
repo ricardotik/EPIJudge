@@ -1,5 +1,5 @@
 import functools
-
+import collections
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
@@ -8,7 +8,31 @@ from test_framework.test_utils import enable_executor_hook
 # ['r', 'a', 'm', ' ', 'i', 's', ' ', 'c', 'o', 's', 't', 'l', 'y'].
 def reverse_words(s):
     # TODO - you fill in here.
-    return
+    dequeue = collections.deque()
+    starting_pointer = 0
+
+    for i in range(len(s)):
+        word = ""
+        if s[i] == " ":
+            for character in (s[starting_pointer:i]):
+                word += character
+            dequeue.append(word)
+            starting_pointer = i + 1
+            dequeue.append(" ")
+
+    word = ""
+    for character in (s[starting_pointer:]):
+        word += character
+    dequeue.append(word)
+
+    i = 0
+    while len(dequeue) > 0:
+        word = dequeue.pop()
+        for character in word:
+            s[i] = character
+            i += 1
+
+    return s
 
 
 @enable_executor_hook
