@@ -38,7 +38,7 @@ Check out these one minute videos to see how easy it is to get started with the 
 
 ### Python
 
-    $ python3 <program_name>.py
+    $ python3 epi_judge_python/<program_name>.py
 
 #### Java
 
